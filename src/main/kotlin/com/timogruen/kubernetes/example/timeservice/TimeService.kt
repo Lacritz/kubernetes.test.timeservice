@@ -1,5 +1,6 @@
 package com.timogruen.kubernetes.example.timeservice
 
+import org.slf4j.LoggerFactory
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.http.ResponseEntity
@@ -11,13 +12,19 @@ import java.time.LocalDateTime
 @SpringBootApplication
 @RequestMapping(value = ["/api/v1"])
 class TimeService {
+    val log = LoggerFactory.getLogger(TimeService::class.java)
+
     @RequestMapping(value = ["/time"], method = [RequestMethod.GET])
     fun getTime(): ResponseEntity<String> {
+        log.info("Request received")
         return ResponseEntity.ok(LocalDateTime.now().toString())
     }
 
     @RequestMapping(value = ["/shutdown"], method = [RequestMethod.POST])
-    fun shutdown() = System.exit(0)
+    fun shutdown() {
+        log.info("Shutdown Service")
+        System.exit(0)
+    }
 }
 
 fun main(args: Array<String>) {
