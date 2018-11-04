@@ -8,7 +8,7 @@ application in kotlin to running the application in a docker-container. As well 
 even 
 writing a kubernetes file - just by translating the docker-compose via '**kompose**'.
 
-##Intention
+## Intention
 This piece of software should be used as a demo or as a skeleton for kotlin and spring-boot based microservices. 
 It's not intended to be a piece of useful software besides of its demo capabilities. 
 
