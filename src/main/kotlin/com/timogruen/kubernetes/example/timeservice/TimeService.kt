@@ -9,11 +9,12 @@ import org.springframework.web.bind.annotation.RequestMethod
 import java.net.InetAddress
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+import kotlin.system.exitProcess
 
 @SpringBootApplication
 @RequestMapping(value = ["/api/v1"])
 class TimeService {
-    val log = LoggerFactory.getLogger(TimeService::class.java)!!
+    private val log = LoggerFactory.getLogger(TimeService::class.java)!!
 
     @RequestMapping(value = ["/time"], method = [RequestMethod.GET])
     fun getTime(): ResponseEntity<String> {
@@ -31,7 +32,7 @@ class TimeService {
     @RequestMapping(value = ["/shutdown"], method = [RequestMethod.POST])
     fun shutdown() {
         log.info("Shutdown Service")
-        System.exit(0)
+        exitProcess(0)
     }
 }
 
